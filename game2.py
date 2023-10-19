@@ -45,6 +45,10 @@ def draw_background(screen):
     text = custom_font.render("Chomp", True, (255, 29, 0))
     screen.blit(text, (screen_width/2-text.get_width()/2, screen_height/2-text.get_height()/2))
 
+def draw_fishes(surf):
+    #Load our fish tiles onto our surface
+
+
 #Main loop
 running = True
 background = screen.copy()
