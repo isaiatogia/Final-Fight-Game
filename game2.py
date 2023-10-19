@@ -48,14 +48,31 @@ def draw_background(screen):
 def draw_fishes(surf):
     #Load our fish tiles onto our surface
     green_fish = pygame.image.load("assets/sprites/green_fish.png").convert()
+    orange_fish = pygame.image.load("assets/sprites/orange_fish.png").convert()
+    puffer_fish = pygame.image.load("assets/sprites/puffer_fish.png").convert()
+
     #set colorkey
     green_fish.set_colorkey((0, 0, 0))
+    orange_fish.set_colorkey((0, 0, 0))
+    puffer_fish.set_colorkey((0, 0, 0))
 
     #distribute our green fish on the screen randomly
     for _ in range(5):
         x = random.randint(0, screen_width-tile_size)
         y = random.randint(0, screen_height-tile_size*2)
         surf.blit(green_fish, (x, y))
+
+    # distribute our orange fish on the screen randomly
+    for _ in range(4):
+        x = random.randint(0, screen_width - tile_size)
+        y = random.randint(0, screen_height - tile_size * 2)
+        surf.blit(orange_fish, (x, y))
+
+    # distribute our puffer fish on the screen randomly
+    for _ in range(3):
+        x = random.randint(0, screen_width - tile_size)
+        y = random.randint(0, screen_height - tile_size * 2)
+        surf.blit(puffer_fish, (x, y))
 
 #Main loop
 running = True
