@@ -95,6 +95,7 @@ while running:
     # draw fish objects
     fishes.draw(background)
 
+
     # update the display
     pygame.display.flip()
 
