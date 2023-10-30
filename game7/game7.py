@@ -4,7 +4,8 @@ import random
 
 #import all our necessary files
 from fish import Fish, fishes
-from background import draw_background
+from enemy import enemies, Enemy
+from background import draw_background, add_fish, add_enemies
 from game_parameters import *
 from player import Player
 
@@ -24,8 +25,10 @@ background = screen.copy()
 draw_background(background)
 
 #draw fish on the screen
-for _ in range(20):
-    fishes.add(Fish(random.randint(screen_width, screen_width * 2), random.randint(tile_size, screen_height - tile_size)))
+add_fish(10)
+
+#draw enemies on the screen
+add_enemies(5)
 
 #draw player fish
 player = Player(screen_width/2, screen_height/2)
@@ -64,6 +67,9 @@ while running:
     #update fish position
     fishes.update()
 
+    #update enemy position
+    enemies.update()
+
     #update player fish
     player.update()
 
@@ -77,8 +83,15 @@ while running:
         #     score += 1
         #draw more green fish on the screen
         for _ in range(len(result)):
-            fishes.add(Fish(random.randint(screen_width, screen_width * 2),
-                            random.randint(tile_size, screen_height - tile_size)))
+            add_fish(1)
+            # fishes.add(Fish(random.randint(screen_width, screen_width * 2),
+            #                 random.randint(tile_size, screen_height - tile_size)))
+
+    #check if player collides with enemy fish
+    result = pygame.sprite.spritecollide(player, enemies, True)
+    if result:
+        for _ in range(len(result)):
+            add_enemies(1)
 
     #check if fish have left the screen
     for fish in fishes:  # loop through our fish in the sprite group
@@ -87,13 +100,20 @@ while running:
             fishes.add(Fish(random.randint(screen_width, screen_width + 50),
                             random.randint(tile_size, screen_height - tile_size)))
 
+    for enemy in enemies:  # loop through our fish in the sprite group
+        if enemy.rect.x < -enemy.rect.width:
+            enemies.remove(enemy)
+            enemies.add(Fish(random.randint(screen_width, screen_width + 50),
+                            random.randint(tile_size, screen_height - tile_size)))
 
     # draw game objects
     fishes.draw(screen)
     player.draw(screen)
 
+    # color and location of score count
     text = score_font.render(f"{score}", True, (255, 29, 0))
-    screen.blit(text, (screen_width - text.get_width()/2 - 15, 0))
+    # screen.blit(text, (screen_width - text.get_width()/2 - 15, 0)) #top right
+    screen.blit(text, (0,0)) #top left
 
     # update the display
     pygame.display.flip()
