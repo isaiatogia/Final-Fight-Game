@@ -19,12 +19,16 @@ RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 WHITE = (255, 255, 255)
 
+#define game variables
+intro_count = 3
+last_count_update = pygame.time.get_ticks()
+
 #define fighter variables
 WARRIOR_SIZE = 162
 WARRIOR_SCALE = 4
 WARRIOR_OFFSET = [72, 56]
-WARRIOR_DATA = [WARRIOR_SIZE,WARRIOR_SCALE, WARRIOR_OFFSET]
-WIZARD_SIZE =250
+WARRIOR_DATA = [WARRIOR_SIZE, WARRIOR_SCALE, WARRIOR_OFFSET]
+WIZARD_SIZE = 250
 WIZARD_SCALE = 3
 WIZARD_OFFSET = [112, 107]
 WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
@@ -32,7 +36,7 @@ WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
 #load background image
 bg_image = pygame.image.load("../Street Kombat/assets/images/background/background.jpg").convert_alpha()
 
-#load spritesheets
+#load fighter spritesheets
 warrior_sheet = pygame.image.load("../Street Kombat/assets/images/warrior/Sprites/warrior.png").convert_alpha()
 wizard_sheet = pygame.image.load("../Street Kombat/assets/images/wizard/Sprites/wizard.png").convert_alpha()
 
@@ -54,8 +58,8 @@ def draw_health_bar(health, x, y):
 
 
 #create two instances of fighters
-fighter_1 = Fighter(200, 310, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS)
-fighter_2 = Fighter(700, 310, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS)
+fighter_1 = Fighter(1,200, 310, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS)
+fighter_2 = Fighter(2,700, 310, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS)
 
 #game loop
 run = True
@@ -70,8 +74,17 @@ while run:
     draw_health_bar(fighter_1.health, 20, 20)
     draw_health_bar(fighter_2.health, 580, 20)
 
-    #move fighters
-    fighter_1.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_2)
+    #update countdown
+    if intro_count <= 0:
+        # move fighters
+        fighter_1.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_2)
+        fighter_2.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_1)
+    else:
+        #update count timer
+        if (pygame.time.get_ticks() - last_count_update) > 1000:
+            intro_count -= 1
+            last_count_update = pygame.time.get_ticks()
+            print(intro_count)
 
     #update fighters
     fighter_1.update()
