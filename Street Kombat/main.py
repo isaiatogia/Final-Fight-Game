@@ -44,6 +44,16 @@ wizard_sheet = pygame.image.load("../Street Kombat/assets/images/wizard/Sprites/
 WARRIOR_ANIMATION_STEPS = [10, 8, 1, 7, 7, 3, 7]
 WIZARD_ANIMATION_STEPS = [8, 8, 1, 8, 8, 3, 7]
 
+#define font
+count_font = pygame.font.Font("../Street Kombat/assets/fonts/turok.ttf", 80)
+score_font = pygame.font.Font("../Street Kombat/assets/fonts/turok.ttf", 30)
+
+#function for drawing text
+def draw_text(text, font, text_col, x, y):
+    img = font.render(text, True, text_col)
+    screen.blit(img, (x, y))
+
+
 #functino for drawing background
 def draw_bg():
     scaled_bg = pygame.transform.scale(bg_image, (SCREEN_WIDTH, SCREEN_HEIGHT)) #scale image to screen dimensions
@@ -55,7 +65,6 @@ def draw_health_bar(health, x, y):
     pygame.draw.rect(screen, WHITE, (x -2, y - 2, 404, 34))
     pygame.draw.rect(screen, RED, (x, y, 400, 30))
     pygame.draw.rect(screen, YELLOW, (x, y, 400 * ratio, 30))
-
 
 #create two instances of fighters
 fighter_1 = Fighter(1,200, 310, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS)
@@ -80,6 +89,8 @@ while run:
         fighter_1.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_2)
         fighter_2.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_1)
     else:
+        #display count timer
+        draw_text(str(intro_count), count_font, RED, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3)
         #update count timer
         if (pygame.time.get_ticks() - last_count_update) > 1000:
             intro_count -= 1
