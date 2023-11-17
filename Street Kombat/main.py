@@ -22,7 +22,7 @@ YELLOW = (255, 255, 0)
 WHITE = (255, 255, 255)
 
 #define game variables
-intro_count = 0#3
+intro_count = 3
 last_count_update = pygame.time.get_ticks()
 score = [0, 0]#player scores. [P1, P2]
 round_over = False
@@ -41,7 +41,7 @@ WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
 #load music and sounds
 pygame.mixer.music.load("../Street Kombat/assets/audio/music.mp3")
 pygame.mixer.music.set_volume(0.5)
-#pygame.mixer.music.play(-1, 0.0, 5000)
+pygame.mixer.music.play(-1, 0.0, 5000)
 sword_fx = pygame.mixer.Sound("../Street Kombat/assets/audio/sword.wav")
 sword_fx.set_volume(0.5)
 magic_fx = pygame.mixer.Sound("../Street Kombat/assets/audio/magic.wav")
