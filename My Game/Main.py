@@ -31,6 +31,20 @@ pygame.mixer.music.play(-1, 0.0, 5000)
 # load background image
 bg_image = pygame.image.load("../My Game/assets/images/background/Forest.png").convert_alpha()
 
+# load font
+victory_font = pygame.font.Font("../My Game/assets/fonts/Canterbury.ttf", 100)
+count_font = pygame.font.Font("../My Game/assets/fonts/Canterbury.ttf", 80)
+score_font = pygame.font.Font("../My Game/assets/fonts/Canterbury.ttf", 30)
+
+# load victory image
+victory_1 = victory_font.render("Knight 1 Wins", True, (255, 0, 0))
+victory_2 = victory_font.render("Knight 2 Wins", True, (255, 0, 0))
+
+# function for drawing text
+def draw_text(text, font, text_col, x, y):
+    img = font.render(text, True, text_col)
+    screen.blit(img, (x, y))
+
 # function for drawing background
 def draw_bg():
     scaled_bg = pygame.transform.scale(bg_image, (SCREEN_WIDTH, SCREEN_HEIGHT)) #scale image to screen dimensions
@@ -45,6 +59,10 @@ while run:
 
     # draw background
     draw_bg()
+
+    # draw text
+    draw_text("Knight 1: ", score_font, RED, 20, 60)
+    draw_text("Knight 2: ", score_font, RED, 580, 60)
 
     # event handler
     for event in pygame.event.get():
