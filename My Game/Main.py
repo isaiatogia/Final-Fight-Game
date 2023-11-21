@@ -1,8 +1,11 @@
-# import pygame module
+# import modules
 import pygame
+from pygame import mixer
 
-# initialize pygame module
+
+# initialize modules
 pygame.init()
+mixer.init()
 
 # create game window
 SCREEN_WIDTH = 1000
@@ -14,6 +17,11 @@ pygame.display.set_caption("My Game") # name displayed atop game window
 # set framerate
 clock = pygame.time.Clock()
 FPS = 60
+
+# load music
+pygame.mixer.music.load("../Fight Game OG/assets/audio/music.mp3")
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1, 0.0, 5000)
 
 # load background image
 bg_image = pygame.image.load("../My Game/assets/images/background/Forest.png").convert_alpha()
