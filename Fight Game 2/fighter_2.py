@@ -39,7 +39,7 @@ class Fighter():
 
     def move(self, screen_width, screen_height, surface, target, round_over):
         SPEED = 10
-        GRAVITY = 2
+        GRAVITY = 1
         dx = 0
         dy = 0
         self.running = False

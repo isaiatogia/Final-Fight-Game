@@ -10,7 +10,7 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 600
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Fight Game OG") #name displayed atop game window
+pygame.display.set_caption("Fight Game 2") #name displayed atop game window
 
 #set framerate
 clock = pygame.time.Clock()
@@ -92,7 +92,7 @@ def draw_health_bar(health, x, y):
 
 #create two instances of fighters
 fighter_1 = Fighter(1,200, 385, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx)
-fighter_2 = Fighter(2,700, 385, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
+fighter_2 = Fighter(2,800, 385, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
 
 #game loop
 run = True
@@ -136,13 +136,13 @@ while run:
         if fighter_1.alive == False:
             score[1] += 1
             round_over = True
-            round_over_time = pygame.time.get_ticks()
             screen.blit(victory_2,(SCREEN_WIDTH / 2 - victory_2.get_width() / 2, SCREEN_HEIGHT / 8 - victory_2.get_height() / 2))
+            round_over_time = pygame.time.get_ticks()
         elif fighter_2.alive == False:
             score[0] += 1
             round_over = True
-            round_over_time = pygame.time.get_ticks()
             screen.blit(victory_1,(SCREEN_WIDTH / 2 - victory_1.get_width() / 2, SCREEN_HEIGHT / 8 - victory_1.get_height() / 2))
+            round_over_time = pygame.time.get_ticks()
     else:
         #display victory image
         #screen.blit(victory_img, (360, 150))
@@ -150,7 +150,7 @@ while run:
             round_over = False
             intro_count = 3
             fighter_1 = Fighter(1, 200, 385, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx)
-            fighter_2 = Fighter(2, 700, 385, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
+            fighter_2 = Fighter(2, 800, 385, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
 
     #event handler
     for event in pygame.event.get():
