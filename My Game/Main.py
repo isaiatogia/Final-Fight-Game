@@ -18,6 +18,11 @@ pygame.display.set_caption("My Game") # name displayed atop game window
 clock = pygame.time.Clock()
 FPS = 60
 
+#define colours
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLACK = (0, 0, 0)
+
 # load music
 pygame.mixer.music.load("../Fight Game OG/assets/audio/music.mp3")
 pygame.mixer.music.set_volume(0.5)
