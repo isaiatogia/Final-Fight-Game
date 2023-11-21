@@ -21,7 +21,7 @@ class Fighter():
         self.attack_cooldown = 0
         self.attack_sound = sound
         self.hit = False
-        self.health = 100
+        self.health = 10
         self.alive = True
 
 
@@ -103,10 +103,10 @@ class Fighter():
             dx = -self.rect.left
         if self.rect.right + dx > screen_width:
             dx = screen_width - self.rect.right
-        if self.rect.bottom + dy > screen_height - 110:
+        if self.rect.bottom + dy > screen_height - 35:
             self.vel_y = 0
             self.jump = False
-            dy = screen_height - 110 - self.rect.bottom
+            dy = screen_height - 35 - self.rect.bottom
 
         #ensure players face each other
         if target.rect.centerx > self.rect.centerx:
@@ -174,7 +174,7 @@ class Fighter():
             #execute attack
             self.attacking = True
             self.attack_sound.play()
-            attacking_rect = pygame.Rect(self.rect.centerx -(2 * self.rect.width * self.flip), self.rect.y, 2 * self.rect.width, self.rect.height)
+            attacking_rect = pygame.Rect(self.rect.centerx -(1.5 * self.rect.width * self.flip), self.rect.y, 1.5 * self.rect.width, self.rect.height)
             if attacking_rect.colliderect(target.rect):
                 target.health -= 10
                 target.hit = True
