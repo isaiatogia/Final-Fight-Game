@@ -41,12 +41,14 @@ K2_OFFSET = [60, 60]
 K2_DATA = [K2_SIZE, K2_SCALE, K2_OFFSET]
 
 # load music
-pygame.mixer.music.load("../Fight Game OG/assets/audio/music.mp3")
+pygame.mixer.music.load("../My Game/assets/audio/music.mp3")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1, 0.0, 5000)
-sword_fx = pygame.mixer.Sound("../Fight Game OG/assets/audio/sword.wav")
+sword_fx = pygame.mixer.Sound("../My Game/assets/audio/sword.wav")
 sword_fx.set_volume(0.5)
-magic_fx = pygame.mixer.Sound("../Fight Game OG/assets/audio/magic.wav")
+
+# this code will be unused until projectile attacks are added
+magic_fx = pygame.mixer.Sound("../My Game/assets/audio/magic.wav")
 magic_fx.set_volume(0.75)
 
 # load background image
