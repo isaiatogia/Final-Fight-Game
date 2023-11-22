@@ -10,7 +10,7 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 600
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Fight Game 2") #name displayed atop game window
+pygame.display.set_caption("Fight Game Experiment") #name displayed atop game window
 
 #set framerate
 clock = pygame.time.Clock()
@@ -51,20 +51,20 @@ magic_fx.set_volume(0.75)
 
 
 #load background image
-bg_image = pygame.image.load("../My Game/assets/images/background/Forest.png").convert_alpha()
+bg_image = pygame.image.load("../Final Fight Game/assets/images/background/Forest.png").convert_alpha()
 
 #load fighter spritesheets
-k1_sheet = pygame.image.load("../My Game/assets/images/knight_1/knight_1_sheet.png").convert_alpha()
-k2_sheet = pygame.image.load("../My Game/assets/images/knight_2/knight_2_sheet.png").convert_alpha()
+k1_sheet = pygame.image.load("../Final Fight Game/assets/images/knight_1/knight_1_sheet.png").convert_alpha()
+k2_sheet = pygame.image.load("../Final Fight Game/assets/images/knight_2/knight_2_sheet.png").convert_alpha()
 
 #define number of steps in each animation
 K1_ANIMATION_STEPS = [4, 6, 10, 1, 10, 3, 10]
 K2_ANIMATION_STEPS = [4, 6, 10, 1, 10, 3, 10]
 
 #define font
-victory_font = pygame.font.Font("../My Game/assets/fonts/Canterbury.ttf", 100)
-count_font = pygame.font.Font("../My Game/assets/fonts/Canterbury.ttf", 80)
-score_font = pygame.font.Font("../My Game/assets/fonts/Canterbury.ttf", 30)
+victory_font = pygame.font.Font("../Final Fight Game/assets/fonts/Canterbury.ttf", 100)
+count_font = pygame.font.Font("../Final Fight Game/assets/fonts/Canterbury.ttf", 80)
+score_font = pygame.font.Font("../Final Fight Game/assets/fonts/Canterbury.ttf", 30)
 
 #load victory image
 victory_1 = victory_font.render("Knight 1 Wins", True, (255, 0, 0))
