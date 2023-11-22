@@ -31,14 +31,14 @@ round_over = False
 ROUND_OVER_COOLDOWN = 2000
 
 #define fighter variables
-WARRIOR_SIZE = 120
-WARRIOR_SCALE = 2.5
-WARRIOR_OFFSET = [60, 60]
-WARRIOR_DATA = [WARRIOR_SIZE, WARRIOR_SCALE, WARRIOR_OFFSET]
-WIZARD_SIZE = 120
-WIZARD_SCALE = 2.5
-WIZARD_OFFSET = [60, 60]
-WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
+K1_SIZE = 120
+K1_SCALE = 2.5
+K1_OFFSET = [60, 60]
+K1_DATA = [K1_SIZE, K1_SCALE, K1_OFFSET]
+K2_SIZE = 120
+K2_SCALE = 2.5
+K2_OFFSET = [60, 60]
+K2_DATA = [K2_SIZE, K2_SCALE, K2_OFFSET]
 
 #load music and sounds
 pygame.mixer.music.load("../Fight Game OG/assets/audio/music.mp3")
@@ -54,12 +54,12 @@ magic_fx.set_volume(0.75)
 bg_image = pygame.image.load("../My Game/assets/images/background/Forest.png").convert_alpha()
 
 #load fighter spritesheets
-warrior_sheet = pygame.image.load("../My Game/assets/images/knight_1/knight_1_sheet.png").convert_alpha()
-wizard_sheet = pygame.image.load("../My Game/assets/images/knight_2/knight_2_sheet.png").convert_alpha()
+k1_sheet = pygame.image.load("../My Game/assets/images/knight_1/knight_1_sheet.png").convert_alpha()
+k2_sheet = pygame.image.load("../My Game/assets/images/knight_2/knight_2_sheet.png").convert_alpha()
 
 #define number of steps in each animation
-WARRIOR_ANIMATION_STEPS = [4, 6, 10, 1, 10, 3, 10]
-WIZARD_ANIMATION_STEPS = [4, 6, 10, 1, 10, 3, 10]
+K1_ANIMATION_STEPS = [4, 6, 10, 1, 10, 3, 10]
+K2_ANIMATION_STEPS = [4, 6, 10, 1, 10, 3, 10]
 
 #define font
 victory_font = pygame.font.Font("../My Game/assets/fonts/Canterbury.ttf", 100)
@@ -91,8 +91,8 @@ def draw_health_bar(health, x, y):
     pygame.draw.rect(screen, GREEN, (x, y, 400 * ratio, 30))
 
 #create two instances of fighters
-fighter_1 = Fighter(1,200, 385, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx)
-fighter_2 = Fighter(2,800, 385, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
+fighter_1 = Fighter(1,200, 385, False, K1_DATA, k1_sheet, K1_ANIMATION_STEPS, sword_fx)
+fighter_2 = Fighter(2,800, 385, True, K2_DATA, k2_sheet, K2_ANIMATION_STEPS, magic_fx)
 
 #game loop
 run = True
@@ -149,8 +149,8 @@ while run:
         if pygame.time.get_ticks() - round_over_time > ROUND_OVER_COOLDOWN:
             round_over = False
             intro_count = 3
-            fighter_1 = Fighter(1, 200, 385, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx)
-            fighter_2 = Fighter(2, 800, 385, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
+            fighter_1 = Fighter(1, 200, 385, False, K1_DATA, k1_sheet, K1_ANIMATION_STEPS, sword_fx)
+            fighter_2 = Fighter(2, 800, 385, True, K2_DATA, k2_sheet, K2_ANIMATION_STEPS, magic_fx)
 
     #event handler
     for event in pygame.event.get():
